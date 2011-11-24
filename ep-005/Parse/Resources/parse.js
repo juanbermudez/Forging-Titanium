@@ -81,6 +81,24 @@ Client.prototype.get = function(args) {
 };
 
 /*
+ * Query a Class.  Argument hash:
+ * 
+ * className: string name of the Parse class
+ * where: The parameters for a query
+ * success: function to call on success
+ * error: function to call on error
+ * 
+ */
+Client.prototype.query = function(args) {
+	this.request({
+		url:args.className+'?where='+args.where,
+		method:'GET',
+		success:args.success,
+		error:args.error
+	});
+};
+
+/*
  * Update a Parse object.  Argument hash:
  * 
  * className: string name of the Parse class
